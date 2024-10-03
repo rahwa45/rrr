@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice Js</title>
+  <style>
+    body{
+      background-color: black;
+    }
+ .contain1{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+ }
+ .contain12, .contain13{
+  width: 40%;
+ }
+ .contain14{
+ margin-left: 10rem;
+ margin-top: 60px;
+ }
+    
+    h1{
+     color: white;
+ 
+     }
+   
+   #result,#guessResult, #findResult, #getResult, #arrayDisplay, #messageDisplay{
+      color: white;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+    button{
+      padding: 8px;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.15s;
+      
+    }
+    button:hover{
+      opacity: 0.8;
+    }
+   input{
+    padding: 7px;
+   }
+   label{
+    font-size: 20px;
+    
+   }
+   @media(max-width: 800px){
+
+.contain1{
+  display: flex;
+  justify-content: center;
+ flex-direction: column;
+ width: 100%;
+}
+.contain12, .contain13{
+  width: 100%;
+}
+button{
+  margin-top: 20px;
+}
+.contain14{
+  margin: 0;
+}
+   }
+  </style>
+  
+</head>
+<body>
+  <div class="contain1">
+  <div class="contain12">
+  <h1>Sum of Two Integers</h1>
+  
+  
+  <input type="number" id="int1" placeholder="Enter First Integer"><br><br>
+  
+  <input type="number" id="int2" placeholder="Enter second Integer"><br><br>
+  <button id="rangeoftwoNumbers" onclick="rangeoftwoNumbers()">Compute Sum</button>
+  <div id="result"></div>
+</div>
+  <div class="contain13">
+  <h1>Random integer between 1 and 10</h1>
+  <input type="number" id="guess" placeholder="guess number"><br><br>
+  <button onclick="randomNumber()">Guess</button>
+  <div id="guessResult"></div>
+</div>
+
+</div>
+<div class="contain1">
+  <div class="contain12">
+  <h1>Check if Numbers are in Range (50-99)</h1>
+  <input type="number" id="number1" placeholder="Enter Number"><br><br>
+  <input type="number" id="number2" placeholder="Enter Number"><br><br>
+  <button onclick="rangeofNumber()">Check Range</button>
+  <div id="findResult"></div>
+</div>
+   <div class="contain13">
+  <h1>Find closest value to 100</h1>
+  <input type="number" id="num1" placeholder="enter number"><br><br>
+  <input type="number" id="num2" placeholder="enter number"><br><br>
+  <button onclick="clothestValue()">Find Closest</button>
+  <div id="getResult"></div>
+</div>
+</div>
+<div class="contain14">
+  <h1>Add Items to Array</h1>
+  <button onclick="addItem(23)">Add</button>
+  <button onclick="addItem(50)">Add</button>
+  <button onclick="addItem(34)">Add</button>
+  <button onclick="displayArray()">Display</button>
+
+  <div id="arrayDisplay"></div>
+  <div id="messageDisplay"></div> 
+</div>
+
+  <script>
+    function rangeoftwoNumbers(){
+    let int1=parseInt(document.getElementById('int1').value);
+    let int2=parseInt(document.getElementById('int2').value);
+    let sum=3*(int1+int2);
+    let sum2=int1+int2;
+
+     
+     if(int1===int2){
+      document.getElementById('result').innerHTML='Result is:' + " " + sum;
+     }
+     else{
+      document.getElementById('result').innerHTML='Result is:'+ " " + sum2;
+     }
+    }
+
+
+    function randomNumber(){
+      let guess=parseInt(document.getElementById('guess').value);
+      let number=[2,3,4,5,6,7,8,9];
+      if(guess===number[0]){
+        document.getElementById('guessResult').innerHTML='Good Job';
+      }
+      else if(guess===number[4]){
+        document.getElementById('guessResult').innerHTML='Good Job';
+      }
+      else if(guess===number[7]){
+        document.getElementById('guessResult').innerHTML='Good Job';
+      }
+      else{
+        document.getElementById('guessResult').innerHTML='Not Matched';
+      }
+    }
+
+    function rangeofNumber(){
+      let number1=parseInt(document.getElementById('number1').value);
+      let number2=parseInt(document.getElementById('number2').value);
+      if((number1>=50 && number1<=90)|| (number2>=50 && number2<=90)){
+        document.getElementById('findResult').innerHTML='True';
+      }
+      else{
+        document.getElementById('findResult').innerHTML='Try Again';
+      }
+    }
+  
+    function clothestValue(){
+      let num1=parseInt(document.getElementById('num1').value);
+      let num2=parseInt(document.getElementById('num2').value);
+      let difference1=100-num1;
+      let difference2=100-num2;
+      if (difference1<difference2){
+        document.getElementById('getResult').innerHTML='the closest value to 100 is' + " " + num1;
+      }
+      else if(difference1>difference2){
+        document.getElementById('getResult').innerHTML='the closest value to 100 is' + " " + num2;
+      }
+      else {
+        document.getElementById('getResult').innerHTML='Both numbers are equally close to 100.';
+      }
+    }
+
+    const myArray = [];
+
+function addItem(element) {
+    myArray.push(element); 
+    document.getElementById('messageDisplay').innerHTML ='Item:' + element; 
+}
+
+function displayArray() {
+   
+    document.getElementById('arrayDisplay').innerHTML = 'Current Array: ['+ myArray + ']'; 
+}
+   
+  </script>
+  
+</body>
+</html>
