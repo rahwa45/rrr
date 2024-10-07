@@ -69,6 +69,9 @@ button{
   margin: 0;
 }
    }
+   #itemList{
+    color: white;
+   }
   </style>
   
 </head>
@@ -110,13 +113,10 @@ button{
 </div>
 <div class="contain14">
   <h1>Add Items to Array</h1>
-  <button onclick="addItem(23)">Add</button>
-  <button onclick="addItem(50)">Add</button>
-  <button onclick="addItem(34)">Add</button>
-  <button onclick="displayArray()">Display</button>
-
-  <div id="arrayDisplay"></div>
-  <div id="messageDisplay"></div> 
+  <input type="number" id="itemInput" placeholder="Enter an item"/>
+  <button onclick="addItem()">Add</button>
+  <button onclick="displayItems()">Display</button>
+  <div id="itemList"></div>
 </div>
 
   <script>
@@ -167,8 +167,8 @@ button{
     function clothestValue(){
       let num1=parseInt(document.getElementById('num1').value);
       let num2=parseInt(document.getElementById('num2').value);
-      let difference1=100-num1;
-      let difference2=100-num2;
+      let difference1=Math.abs(100-num1);
+      let difference2=Math.abs(100-num2);
       if (difference1<difference2){
         document.getElementById('getResult').innerHTML='the closest value to 100 is' + " " + num1;
       }
@@ -180,16 +180,15 @@ button{
       }
     }
 
-    const myArray = [];
+    const items = [];
 
-function addItem(element) {
-    myArray.push(element); 
-    document.getElementById('messageDisplay').innerHTML ='Item:' + element; 
+function addItem() {
+    items.push(document.getElementById('itemInput').value);
+    document.getElementById('itemInput').value = '';
 }
 
-function displayArray() {
-   
-    document.getElementById('arrayDisplay').innerHTML = 'Current Array: ['+ myArray + ']'; 
+function displayItems() {
+    document.getElementById('itemList').innerHTML = items.join('<br>');
 }
    
   </script>
