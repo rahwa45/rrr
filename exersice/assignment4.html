@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>assignment 4</title>
+</head>
+<body>
+  <input type="date" id="inputYear">
+  <button onclick="leapYear()">Check</button>
+  <p id="result"></p>
+ 
+
+  <h1>January 1st Sunday Checker (2014-2050)</h1>
+  <div id="results"></div>
+
+  <h1>Odd or Even Checker</h1>
+  <div id="findResults"></div>
+
+  <h1>Palindrome Checker</h1>
+  <input type="text" id="inputString" placeholder="Enter a string" />
+  <button onclick="checkPalindrome()">Check</button>
+  <p id="outPut"></p>
+  <script>
+    function leapYear() {
+      let year = new Date(document.getElementById('inputYear').value).getFullYear();
+      
+     
+      if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+        document.getElementById('result').innerHTML = `${year} is a leap year.`;
+      } else {
+        document.getElementById('result').innerHTML= `${year} is not a leap year.`;
+      }
+    }
+
+    for (let year = 2014; year <= 2050; year++) {
+            let date = new Date(year, 0, 1);
+            if (date.getDay() === 0) { 
+                document.getElementById('results').innerHTML += year + ' is a Sunday.<br>';
+            } else {
+                document.getElementById('results').innerHTML += year + ' is not a Sunday.<br>';
+            }
+        }
+
+
+        for (let i = 0; i <= 15; i++) {
+            let message;
+            if (i % 2 === 0) {
+                message = i + " is even.<br>";
+            } else {
+                message = i + " is odd.<br>";
+            }
+            document.getElementById('findResults').innerHTML += message;
+        }
+
+        function checkPalindrome() {
+            const str = document.getElementById('inputString').value;
+            const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '');
+            const isPalindrome = cleanedStr === cleanedStr.split('').reverse().join('');
+            document.getElementById('outPut').innerHTML = 
+                `${str} is ${isPalindrome ? '' : 'not '}a palindrome.`;
+        }
+  </script>
+
+
+
+
+  
+</body>
+</html>
