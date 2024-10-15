@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>loop</title>
+</head>
+<body>
+
+  <h1>Double Numbers</h1>
+  <button onclick="doubleAndShow()">Click to Double</button>
+
+
+  <h1>Print Object Keys and Values</h1>
+    <button onclick="printObject()">Print Object</button>
+
+    <h1>Print Strings with Delay</h1>
+    <button onclick="startPrinting()">Print Strings</button>
+
+  <script>
+      function doubleAndShow() {
+          const numbers = [1, 2, 3, 4]; 
+          const doubledArray = []; 
+
+        
+          for (const num of numbers) {
+              doubledArray.push(num * 2);
+          }
+
+          
+          console.log('Doubled Numbers: ' + doubledArray.join(', '));
+      }
+
+
+          function printObject() {
+            const obj = {
+                name: 'Rose',
+                age: 25,
+                city: 'Addis'
+            };
+
+            for (const key in obj) {
+                console.log(key + ': ' + obj[key]);
+            }
+        }
+
+
+        function startPrinting() {
+            const strings = ['Hello', 'World', 'JavaScript'];
+
+            
+            for (let i = 0; i < strings.length; i++) {
+                setTimeout(function() {
+                    console.log(strings[i]);
+                }, i * 1000); 
+            }
+        }
+  </script>
+
+  
+</body>
+</html>
