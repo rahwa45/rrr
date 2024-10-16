@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>asynchronous tasks</title>
+</head>
+<body>
+  <h1>Asynchronous Tasks Example</h1>
+  <button id="startButton">Start</button>
+  <div id="output"></div>
+
+  <script>
+      
+      function delay(ms) {
+          return new Promise(function(resolve) {
+              setTimeout(function() {
+                  resolve();
+              }, ms);
+          });
+      }
+
+      
+      function fetchData() {
+          return delay(2000).then(function() {
+              const randomValue = Math.random();
+              console.log('Generated Random Value:', randomValue);
+              const number = Math.floor(randomValue * 100) + 1;
+              console.log('Final Random Number:', number); 
+              return number; 
+          });
+      }
+
+      
+      function processData(data) {
+          return delay(1000).then(function() {
+              console.log('Fetched Data:', data);
+              return data * 2;
+          });
+      }
+
+      
+      document.getElementById('startButton').onclick = function() {
+          fetchData().then(function(data) {
+              return processData(data);
+          }).then(function(result) {
+             
+              document.getElementById('output').innerText = 'Processed Result: ' + result; 
+          }).catch(function(error) {
+              console.error('Error:', error);
+          });
+      };
+  </script>
+</body>
+</html>
